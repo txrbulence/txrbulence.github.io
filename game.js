@@ -8,8 +8,9 @@ var ballSpeedY = 4;
 var player1Score = 0;
 var player2Score = 0;
 var losingScore = 0;
-var winningScore = 1;
+var winningScore = 7;
 
+var showingMainMenu = true;
 var showingWinScreen = false;
 
 var paddle1Y = 250;
@@ -130,40 +131,6 @@ function drawNet() {
     }
 }
 
-//draws the canvas, ball, and paddles
-function drawEverything() {
-    //makes the canvas black
-    colorRect(0,0,canvas.width,canvas.height,'black');
-
-    if(showingWinScreen) {
-        canvasContext.fillStyle = 'white'
-
-        if(player1Score >= winningScore) {
-            canvasContext.fillText("Left Player Won!", 364,200);
-        }
-         else if(player2Score >= winningScore) {
-            canvasContext.fillText("Bobby beat you this time . . .", 340, 200)
-        }
-        canvasContext.fillText('Click LMB to continue!', 350, 175);
-        return;
-    }
-
-    ballX = ballX + 5;
-
-    drawNet()
-
-    //this is the left player paddle
-    colorRect(0,paddle1Y,paddleThickness,100, 'white');
-
-    //this is the right player paddle
-    colorRect(canvas.width-10,paddle2Y,paddleThickness ,100, 'white');
-
-    //next line draws the ball
-    colorCircle(ballX, ballY, 10, 'white');
-
-    canvasContext.fillText(player1Score, 100, 100);
-    canvasContext.fillText(player2Score, canvas.width-100, 100);
-}
 
 function colorCircle(centerX, centerY, radius, drawColor) {
     canvasContext.fillStyle = 'drawColor';
